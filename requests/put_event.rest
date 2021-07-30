@@ -1,0 +1,10 @@
+PUT http://localhost:3000/vehiculos/60fb631955b3172dc4c39318
+Content-Type : application/json
+
+{
+    "vehiculo" : "Integra GS 2.0",
+    "marca" : "Fiat",
+    "ano" : 2013,
+    "descripcion" : "vehiculo pequeño",
+    "vendido" : true
+}

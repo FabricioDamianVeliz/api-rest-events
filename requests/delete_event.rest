@@ -1,0 +1,1 @@
+DELETE http://localhost:3000/vehiculos/60fb632455b3172dc4c39320
