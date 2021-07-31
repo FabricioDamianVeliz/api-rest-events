@@ -4,13 +4,20 @@ const uniqueValidator = require('mongoose-unique-validator');
 const userSchema = new Schema({
     username: {
         type: String,
-        unique: true
+        unique: true,
+        required: [true,'Obligatory field']
     },
-    name: String,
-    passwordHash: String,
-    notes: [{
+    name: {
+        type: String,
+        required: [true,'Obligatory field']
+    },
+    passwordHash: {
+        type: String,
+        required: [true,'Obligatory field']
+    },
+    events: [{
         type: Schema.Types.ObjectId,
-        ref: 'Note'
+        ref: 'Event'
     }]
 });
 

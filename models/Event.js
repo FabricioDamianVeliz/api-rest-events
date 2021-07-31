@@ -1,21 +1,40 @@
 const {model, Schema} = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 
-const vehiculoSchema = new Schema({
+const eventSchema = new Schema({
     
-    vehiculo: {
+    title: {
         type: String,
-        unique: true
+        unique: true,
+        required: [true,'Obligatory field']
     },
-    marca: String,
-    ano: Number,
-    descripcion: String,
-    vendido: Boolean,
-    created: Date,
-    updated: Date
+    description: {
+        type: String,
+        required: [true,'Obligatory field']
+    },
+    dateList: {
+        type: [Date],
+        required: [true,'Obligatory field']
+    },
+    place: {
+        type: String,
+        required: [true,'Obligatory field']
+    },
+    outstanding: {
+        type: String,
+        required: [true,'Obligatory field']
+    },
+    image: {
+        type: String,
+        required: [true,'Obligatory field']
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
 });
 
-vehiculoSchema.set('toJSON',{
+eventSchema.set('toJSON',{
     transform: (document, returnedObject) => {
         returnedObject.id = returnedObject._id;
         delete returnedObject._id;
@@ -23,8 +42,8 @@ vehiculoSchema.set('toJSON',{
     }
 });
 
-vehiculoSchema.plugin(uniqueValidator);
+eventSchema.plugin(uniqueValidator);
 
-const Vehiculo = model('Vehiculo',vehiculoSchema);
+const Event = model('Event',eventSchema);
 
-module.exports = Vehiculo;
+module.exports = Event;
