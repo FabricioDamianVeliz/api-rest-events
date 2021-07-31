@@ -1,83 +1,10 @@
-POST http://localhost:3000/vehiculos
+POST http://localhost:3000/api/events
 Content-Type : application/json
 
 {
-    "vehiculo" : "Integra GS 1.8",
-    "marca" : "Acura",
-    "ano" : 1996,
-    "descripcion" : "vehiculo grande",
-    "vendido" : false
-}
-
-###
-
-POST http://localhost:3000/vehiculos
-Content-Type : application/json
-
-{
-    "vehiculo": "Legend 3.2/3.5",
-    "marca": "Acura",
-    "ano": 1997,
-    "descripcion": "vehiculo grande",
-    "vendido": false
-}
-
-###
-
-POST http://localhost:3000/vehiculos
-Content-Type : application/json
-
-{
-    "vehiculo": "NSX 3.0",
-    "marca": "Acura",
-    "ano": 2000,
-    "descripcion": "vehiculo grande",
-    "vendido": false
-}
-
-###
-
-POST http://localhost:3000/vehiculos
-Content-Type : application/json
-
-{
-    "vehiculo": "Virage Coupe 6.0 V12 490cv",
-    "marca": "ASTON MARTIN",
-    "ano": 2015,
-    "descripcion": "vehiculo grande",
-    "vendido": false
-}
-
-###
-
-POST http://localhost:3000/vehiculos
-Content-Type : application/json
-
-{
-    "vehiculo": "G-63 AMG 5.5 Bi-Turbo 32V 4x4 Aut.",
-    "marca": "Mercedes-Benz",
-    "ano": 2012,
-    "descripcion": "vehiculo grande",
-    "vendido": false
-}
-
-###
-
-POST http://localhost:3000/vehiculos
-Content-Type : application/json
-
-{
-    "vehiculo": "Polo 1.0 Mi 79cv 16V 5p",
-    "marca": "VW - VolksWagen",
-    "ano": 2005,
-    "descripcion": "vehiculo grande",
-    "vendido": false
-}
-
-###
-
-POST http://localhost:3000/vehiculos
-Content-Type : application/json
-
-{
+    "title" : "PONCHO",
+    "description" : "festival en el que se venden variadas artesanias",
+    "dateList" : ["2021-07-28T22:44:33.081+00:00", "2021-07-28T22:44:33.081+00:00"],
+    "place" : "frente del estadio",
+    "image" : "http://#"
 }

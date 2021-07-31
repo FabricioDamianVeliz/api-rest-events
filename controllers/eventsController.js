@@ -1,71 +1,57 @@
-const Vehiculo = require('../models/Vehiculo');
+const Event = require('../models/Event');
 
-exports.mostrarVehiculos = async(req,res) => {
+exports.showEvents = async(req,res) => {
     
-    const vehiculos = await Vehiculo.find({});
+    const events = await Event.find({});
     
-    res.json(vehiculos);
+    res.json(events);
         
 };
 
-exports.crearVehiculo = async(req,res,next) => {
+exports.createEvent = async(req,res,next) => {
 
-    const {vehiculo, marca, ano, descripcion, vendido = false} = req.body;
+    const {title, description, dateList, place, image} = req.body;
+    // const {userId} = req;
 
-    if(!vehiculo || !marca || !ano || !descripcion){
+    // const user = await User.findById(userId);
+
+    if(!title || !description || !dateList || !place || !image){
         return res.status(400).json({
             error: 'Falta un campo obligatorio'
         });
     }
 
-    const newVehiculo = new Vehiculo({
+    const newEvent = new Event({
 
-        vehiculo,
-        marca,
-        ano,
-        descripcion,
-        vendido,
-        created: new Date(),
-        updated: null
-        
+        title,
+        description,
+        dateList,
+        place,
+        outstanding: 'No',
+        image
+        // ,
+        // user: user._id  
     });
 
     try {
-        
-        const savedVehiculo = await newVehiculo.save();
-        res.status(201).json(savedVehiculo);
+        const savedEvent = await newEvent.save();
+        // user.events = user.events.concat(savedEvent._id);
+        // await user.save();
+        res.status(201).json(savedEvent);
     } catch (error) {
         next(error);
     }
     
 };
 
-exports.buscarVehiculo = async(req, res, next) => {
-
-    const {marca} = req.query
-    const {ano} = req.query
-
-    try {
-
-        const vehiculoEncontrado = await Vehiculo.find( marca && ano ? {$and:[{marca},{ano} ]} : {$or:[{marca},{ano} ]})
-
-        res.status(200).json(vehiculoEncontrado)
-
-
-    } catch (error) {
-
-        next(error)
-    }
-}
-
-exports.mostrarVehiculoPorId = async(req,res,next) => {
+exports.showEventById = async(req,res,next) => {
 
     try {
 
         const {id} = req.params;
-        const vehiculoEncontrado = await Vehiculo.findById(id);
-        if(vehiculoEncontrado){
-            return res.json(vehiculoEncontrado);
+        const eventFound = await Event.findById(id);
+        if(eventFound){
+            return res.json(eventFound);
         }else{
             res.status(404).end();
         }
@@ -76,73 +62,3 @@ exports.mostrarVehiculoPorId = async(req,res,next) => {
     
 };
 
-exports.modificarDatos = async(req,res,next) => {
-
-    try {
-        
-        const {id} = req.params;
-        const {vehiculo, marca, ano, descripcion, vendido, updated} = req.body;
-
-        const newVehiculo = {
-            vehiculo,
-            marca,
-            ano,
-            descripcion,
-            vendido,
-            updated: new Date()
-        };
-
-        const vehiculoUpdated = await Vehiculo.findByIdAndUpdate(id,newVehiculo,{new: true});
-        res.json(vehiculoUpdated);
-
-    } catch (error) {
-        
-        next(error);
-    }
-
-};
-
-exports.cambiarEstadoVendido = async(req,res,next) => {
-
-    try {
-        
-        const {id} = req.params;
-        const {vendido: sold} = await Vehiculo.findById(id);
-
-        // cambiar el estado
-        let estado = false;
-        if(sold === estado) {
-            
-            estado = true;
-        }else{
-            estado = false;
-        }
- 
-        const newVehiculo = {
-
-            vendido: estado,
-            updated: new Date()
-        };
-
-        const vehiculoUpdated = await Vehiculo.findByIdAndUpdate(id,newVehiculo,{new: true});
-        res.json(vehiculoUpdated);
-    } catch (error) {
-        
-        next(error);
-    }
-    
-};
-
-exports.borrarVehiculo = async(req,res,next) => {
-
-    try {
-        
-        const {id} = req.params;
-        await Vehiculo.findByIdAndDelete(id);
-        res.status(204).end();
-    } catch (error) {
-        
-        next(error);
-    }
-
-};

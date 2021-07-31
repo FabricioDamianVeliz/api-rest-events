@@ -1,7 +1,7 @@
 require('dotenv').config();
 require('./mongo');
 const express = require('express');
-const routes = require('./routes');
+const routes = require('./routes/events');
 const app = express();
 const cors = require('cors');
 const notFound = require('./middleware/notFound.js');
