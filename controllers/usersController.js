@@ -3,11 +3,10 @@ const User = require('../models/User');
 
 exports.showUsers = async (req, res) => {
 
-    const users = await User.find({})
-    // .populate('events', {
-    //     title: 1,
-    //     description: 1
-    // })
+    const users = await User.find({}).populate('events', {
+        title: 1,
+        description: 1
+    })
     ;
     res.json(users);
 };

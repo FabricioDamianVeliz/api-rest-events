@@ -1,5 +1,5 @@
 const Event = require('../models/Event');
-const User = require('../controllers/usersController');
+const User = require('../models/User');
 const faker = require('faker');
 
 exports.showEvents = async(req,res) => {
@@ -66,16 +66,23 @@ exports.showEventById = async(req,res,next) => {
     
 };
 
-exports.listOfPaginatedEvents = async(req,res) => {
+exports.listOfPaginatedEvents = async(req,res,next) => {
     
-    const { limit = 10, skip = 0 } = req.query;
+    try {
+        
+        const { limit = 10, skip = 0 } = req.query;
 
-    const [total, events] = await Promise.all([
-        Event.countDocuments(),
-        Event.find().sort({ _id: -1 }).skip(Number(skip)).limit(Number(limit))
-    ]);
+        const {userId} = req;
 
-    return res.json({ total, events });
+        const [total, events] = await Promise.all([
+            Event.countDocuments(),
+            Event.find({user : userId}).sort({ _id: -1 }).skip(Number(skip)).limit(Number(limit))
+        ]);
+
+        return res.json({ total, events });
+    } catch (error) {
+        next(error);
+    }
         
 };
 
