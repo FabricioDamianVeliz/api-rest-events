@@ -27,12 +27,11 @@ const eventSchema = new Schema({
     image: {
         type: String,
         required: [true,'Obligatory field']
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }
-    // ,
-    // user: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'User'
-    // }
 });
 
 eventSchema.set('toJSON',{

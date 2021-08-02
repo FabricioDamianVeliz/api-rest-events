@@ -13,19 +13,14 @@ module.exports = function(){
     });
 
     //rutas para el visitante
-    router.get('/api/events', eventsController.showEvents);
+    router.get('/events', eventsController.showEvents);
     // router.get('/api/events', eventsController.shareEvent);
-    // router.get('/api/events/:id',eventsController.showEventById);
+    router.get('/events/:id',eventsController.showEventById);
     // router.get('/api/events', eventsController.outstandingEvents);
-
+    
     //rutas para el logueado
-    // router.get('/api/events', userExtractor, eventsController.listOfPaginatedEvents);
-    router.post('/api/events', eventsController.createEvent);
-
-    // router.get('/api/events/find',eventsController.buscarVehiculo);
-    // router.put('/api/events/:id',eventsController.modificarDatos);
-    // router.patch('/api/events/:id',eventsController.cambiarEstadoVendido);
-    // router.delete('/api/events/:id',eventsController.borrarVehiculo);
+    router.get('/events', userExtractor, eventsController.listOfPaginatedEvents);
+    router.post('/events', userExtractor, eventsController.createEvent);
 
     return router;
 }

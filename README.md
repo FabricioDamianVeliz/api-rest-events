@@ -4,43 +4,19 @@ https://api-rest-events-2021.herokuapp.com/
 
 ## ROUTES
 
-`GET /vehiculos`
+`GET /api/events`
 
-Devuelve todos los vehículos.
-
----
-
-`GET /vehiculos/find`
-
-Devuelve los vehículos de acuerdo al parámetro.
-Acepta los parámetros `marca` y `ano`, ya sea uno o ambos.
+Devuelve todos los eventos.
 
 ---
 
-`GET /vehiculos/{id}`
+`GET /api/events/{id}`
 
-Devuelve los datos de un vehículo por id.
-
----
-
-`POST /vehiculos`
-
-Añade un vehículo.
+Devuelve los detalles de un evento por id.
 
 ---
 
-`PUT /vehiculos/{id}`
+`POST /api/events`
 
-Actualiza los datos de un vehículo por id.
+Añade un evento.
 
----
-
-`PATCH /vehiculos/{id}`
-
-Cambia el estado de `vendido` de un vehículo por id.
-
----
-
-`DELETE /vehiculos/{id}`
-
-Elimina un vehículo por id.

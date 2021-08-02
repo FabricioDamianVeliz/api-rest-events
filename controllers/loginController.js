@@ -1,18 +1,8 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-// const loginRouter = require('express').Router();
 const User = require('../models/User');
 
-// usersRouter.get('/',async (req, res) => {
-
-//     const users = await User.find({}).populate('notes', {
-//         content: 1,
-//         date: 1
-//     });
-//     res.json(users);
-// });
-
-loginRouter.post('/',async (req, res) => {
+exports.createLogin = async (req, res) => {
 
     const {body} = req;
     const {username, password} = body;
@@ -46,6 +36,5 @@ loginRouter.post('/',async (req, res) => {
         token
     })
     
-});
+};
 
-module.exports = loginRouter;

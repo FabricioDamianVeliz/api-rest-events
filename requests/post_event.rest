@@ -1,5 +1,6 @@
 POST http://localhost:3000/api/events
 Content-Type : application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDc2MjZmNjljYTdlMWM2Y2E0NTJlYiIsInVzZXJuYW1lIjoiTWNMb3ZpbiIsImlhdCI6MTYyNzg3MzkwOSwiZXhwIjoxNjI4NDc4NzA5fQ.PDCDL7HEeKjdzGh4FMZ70AKFhD7Qn50u8zJoU8AcFnY
 
 {
     "title" : "PONCHO",
