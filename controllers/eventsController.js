@@ -4,7 +4,7 @@ const faker = require('faker');
 
 exports.showEvents = async(req,res) => {
     
-    const events = await Event.find({});
+    const events = await Event.find({}).sort({dateList: 1});
     
     res.json(events);
 
@@ -25,6 +25,25 @@ exports.createEvent = async(req,res,next) => {
             error: 'Falta un campo obligatorio'
         });
     }
+
+    
+    dateList.forEach(date => {
+
+        // console.log(date);
+        // console.log(typeof(date));
+        // console.log(new Date());
+        // console.log(typeof(new Date()));
+        // console.log(new Date().getTime());
+        if(!(new Date(date).getTime() > new Date().getTime())){
+            return res.status(400).json({
+                error: 'the date is not correct'
+            });
+        }
+        
+    });
+
+    dateList.sort();
+    
 
     const newEvent = new Event({
 
@@ -99,6 +118,26 @@ exports.shareEvent = async(req,res,next) => {
         res.json(share);
         console.log(share);
         
+    } catch (error) {
+        next(error);
+    }
+        
+};
+
+exports.outstandingEvents = async(req,res,next) => {
+    
+    try {
+        
+        const { limit = 10, skip = 0 } = req.query;
+
+        const {userId} = req;
+
+        const [total, events] = await Promise.all([
+            Event.countDocuments(),
+            Event.find({user : userId}).sort({ _id: -1 }).skip(Number(skip)).limit(Number(limit))
+        ]);
+
+        return res.json({ total, events });
     } catch (error) {
         next(error);
     }

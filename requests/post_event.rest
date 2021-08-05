@@ -3,9 +3,9 @@ Content-Type : application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDc2OWQwNWQ5NDM1MTc3Y2ZiODBmZCIsInVzZXJuYW1lIjoiTWNMb3ZpbiIsImlhdCI6MTYyNzg3NTgwMiwiZXhwIjoxNjI4NDgwNjAyfQ.FNUPWqXx23ihIIW528B20F4rcZB2iGcWedv_kdG0-JE
 
 {
-    "title" : "PONCHO 15",
+    "title" : "PONCHO 5",
     "description" : "festival en el que se venden variadas artesanias",
-    "dateList" : ["2021-07-28T22:44:33.081+00:00", "2021-07-28T22:44:33.081+00:00"],
+    "dateList" : ["2020-07-05T22:44:33.081+00:00", "2022-07-03T22:44:33.081+00:00"],
     "place" : "frente del estadio",
     "image" : "http://#"
 }
