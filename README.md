@@ -1,6 +1,6 @@
 ## HEROKU
 
-https://api-rest-events-2021.herokuapp.com/
+https://api-rest-events-2021.herokuapp.com/api/events
 
 ## ROUTES
 
