@@ -26,7 +26,8 @@ exports.createEvent = async(req,res,next) => {
         });
     }
 
-    
+    let flag = 0;
+
     dateList.forEach(date => {
 
         // console.log(date);
@@ -35,12 +36,16 @@ exports.createEvent = async(req,res,next) => {
         // console.log(typeof(new Date()));
         // console.log(new Date().getTime());
         if(!(new Date(date).getTime() > new Date().getTime())){
-            return res.status(400).json({
-                error: 'the date is not correct'
-            });
+            flag = 1;
         }
         
     });
+
+    if(flag === 1){
+        return res.status(400).json({
+            error: 'the date is not correct'
+        });
+    }
 
     dateList.sort();
     
