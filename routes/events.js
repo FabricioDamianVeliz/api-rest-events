@@ -20,7 +20,7 @@ module.exports = function(){
     router.get('/events', eventsController.showEvents);
     router.get('/events-share/:id', eventsController.shareEvent);
     router.get('/events/:id',eventsController.showEventById);
-    // router.get('/api/events-outstanding', eventsController.outstandingEvents);
+    router.get('/events-outstanding', eventsController.outstandingEvents);
     
     return router;
 }

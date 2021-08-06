@@ -21,7 +21,7 @@ const eventSchema = new Schema({
         required: [true,'Obligatory field']
     },
     outstanding: {
-        type: String,
+        type: Boolean,
         required: [true,'Obligatory field']
     },
     image: {

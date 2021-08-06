@@ -1,12 +1,27 @@
 POST http://localhost:3000/api/events-login
 Content-Type : application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMDc2OWQwNWQ5NDM1MTc3Y2ZiODBmZCIsInVzZXJuYW1lIjoiTWNMb3ZpbiIsImlhdCI6MTYyNzg3NTgwMiwiZXhwIjoxNjI4NDgwNjAyfQ.FNUPWqXx23ihIIW528B20F4rcZB2iGcWedv_kdG0-JE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMGM5MjhiM2VjODNiMjMxNDlhYTVmMyIsInVzZXJuYW1lIjoiTWNMb3ZpbiIsImlhdCI6MTYyODIxMzkxMywiZXhwIjoxNjI4ODE4NzEzfQ.SlRUBxA9_XxE4_dHC5GMaLxlMZvGXA1zK22i2_IQ-Ys
 
 {
-    "title" : "PONCHO 5",
+    "title" : "PONCHO 2",
     "description" : "festival en el que se venden variadas artesanias",
-    "dateList" : ["2020-07-05T22:44:33.081+00:00", "2022-07-03T22:44:33.081+00:00"],
+    "dateList" : ["2022-07-03T22:44:33.081+00:00", "2022-07-05T22:44:33.081+00:00"],
     "place" : "frente del estadio",
+    "image" : "http://#"
+}
+
+###
+
+POST http://localhost:3000/api/events-login
+Content-Type : application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMGM5MjhiM2VjODNiMjMxNDlhYTVmMyIsInVzZXJuYW1lIjoiTWNMb3ZpbiIsImlhdCI6MTYyODIxMzkxMywiZXhwIjoxNjI4ODE4NzEzfQ.SlRUBxA9_XxE4_dHC5GMaLxlMZvGXA1zK22i2_IQ-Ys
+
+{
+    "title" : "PONCHO 3",
+    "description" : "festival en el que se venden variadas artesanias",
+    "dateList" : ["2022-07-02T22:44:33.081+00:00", "2022-07-01T22:44:33.081+00:00"],
+    "place" : "frente del estadio",
+    "outstanding" : true,
     "image" : "http://#"
 }
 
