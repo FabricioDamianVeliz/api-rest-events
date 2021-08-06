@@ -120,7 +120,7 @@ exports.shareEvent = async(req,res,next) => {
             share : `Iré al ${title} @ ${dateList[0]} ${url}`
         };
         res.json(share);
-        console.log(share);
+        // console.log(share);
         
     } catch (error) {
         next(error);
