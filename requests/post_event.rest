@@ -1,12 +1,13 @@
 POST http://localhost:3000/api/events-login
 Content-Type : application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMGM5MjhiM2VjODNiMjMxNDlhYTVmMyIsInVzZXJuYW1lIjoiTWNMb3ZpbiIsImlhdCI6MTYyODIxMzkxMywiZXhwIjoxNjI4ODE4NzEzfQ.SlRUBxA9_XxE4_dHC5GMaLxlMZvGXA1zK22i2_IQ-Ys
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMGQ4ODA5ZjVjNThmMTczNDM0ZGZiZCIsInVzZXJuYW1lIjoiTWNMb3ZpbiIsImlhdCI6MTYyODI3Njc1NSwiZXhwIjoxNjI4ODgxNTU1fQ.He7RcVooUV1nmwzMLXlpNCEfbgMo9G7sE5B7YC0nGI0
 
 {
-    "title" : "PONCHO 2",
-    "description" : "festival en el que se venden variadas artesanias",
-    "dateList" : ["2022-07-03T22:44:33.081+00:00", "2022-07-05T22:44:33.081+00:00"],
-    "place" : "frente del estadio",
+    "title" : "FIESTA NACIONAL DE LA MANDARINA",
+    "description" : "Esta fiesta rinde tributo a los productores locales y a todos aquellos que aportan su trabajo para el cultivo de la mandarina",
+    "dateList" : ["2022-05-12T22:44:33.081+00:00", "2022-05-11T22:44:33.081+00:00", "2022-05-10T22:44:33.081+00:00"],
+    "place" : "Chumbicha - Catamarca",
+    "outstanding" : true,
     "image" : "http://#"
 }
 
@@ -14,14 +15,29 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMGM5MjhiM
 
 POST http://localhost:3000/api/events-login
 Content-Type : application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMGM5MjhiM2VjODNiMjMxNDlhYTVmMyIsInVzZXJuYW1lIjoiTWNMb3ZpbiIsImlhdCI6MTYyODIxMzkxMywiZXhwIjoxNjI4ODE4NzEzfQ.SlRUBxA9_XxE4_dHC5GMaLxlMZvGXA1zK22i2_IQ-Ys
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMGQ4ODA5ZjVjNThmMTczNDM0ZGZiZCIsInVzZXJuYW1lIjoiTWNMb3ZpbiIsImlhdCI6MTYyODI3Njc1NSwiZXhwIjoxNjI4ODgxNTU1fQ.He7RcVooUV1nmwzMLXlpNCEfbgMo9G7sE5B7YC0nGI0
 
 {
-    "title" : "PONCHO 3",
-    "description" : "festival en el que se venden variadas artesanias",
-    "dateList" : ["2022-07-02T22:44:33.081+00:00", "2022-07-01T22:44:33.081+00:00"],
-    "place" : "frente del estadio",
+    "title" : "FORTNITE RIFT TOUR",
+    "description" : "Concierto digital de la cantante Ariana Grande",
+    "dateList" : ["2021-08-06T22:44:33.081+00:00", "2021-08-08T22:44:33.081+00:00", "2021-08-07T22:44:33.081+00:00"],
+    "place" : "Dentro del videojuego Fotnite",
     "outstanding" : true,
+    "image" : "http://#"
+}
+
+###
+
+POST http://localhost:3000/api/events-login
+Content-Type : application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMGQ4ODA5ZjVjNThmMTczNDM0ZGZiZCIsInVzZXJuYW1lIjoiTWNMb3ZpbiIsImlhdCI6MTYyODI3Njc1NSwiZXhwIjoxNjI4ODgxNTU1fQ.He7RcVooUV1nmwzMLXlpNCEfbgMo9G7sE5B7YC0nGI0
+
+{
+    "title" : "EVENTO 11",
+    "description" : "Su descripción",
+    "dateList" : ["2022-06-18T22:44:33.081+00:00", "2022-06-17T22:44:33.081+00:00"],
+    "place" : "Su ubicación",
+    "outstanding" : false,
     "image" : "http://#"
 }
 

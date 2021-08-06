@@ -117,7 +117,7 @@ exports.shareEvent = async(req,res,next) => {
         const {_id,title,dateList} = await Event.findById(id);
         const url = `http://${req.headers.host}/api/events/${_id}`;
         const share = {
-            share : `Iré al ${title} @ ${dateList[0]} ${url}`
+            share : ` Iré al ${title} @ ${dateList[0]} ${url} `
         };
         res.json(share);
         // console.log(share);
