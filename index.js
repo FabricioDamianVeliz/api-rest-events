@@ -9,7 +9,6 @@ const cors = require('cors');
 const notFound = require('./middleware/notFound.js');
 const handleErrors = require('./middleware/handleErrors');
 
-
 app.use(cors());
 app.use(express.json());
 

@@ -4,27 +4,30 @@ const User = require('../models/User');
 
 const api = supertest(app);
 
-const initialVehicles = [
+const initialEvents = [
     {
-        vehiculo : "Integra GS 1.8",
-        marca : "Acura",
-        ano : 1996,
-        descripcion : "vehiculo grande",
-        vendido : false
+        title : "EVENTO UNO",
+        description : "Su descripción",
+        dateList : ["2022-07-01T22:44:33.081+00:00", "2022-07-02T22:44:33.081+00:00"],
+        place : "Su ubicación",
+        outstanding : false,
+        image : "http://#"
     },
     {
-        vehiculo: "G-63 AMG 5.5 Bi-Turbo 32V 4x4 Aut.",
-        marca: "Mercedes-Benz",
-        ano: 2012,
-        descripcion: "vehiculo grande",
-        vendido: false
+        title : "EVENTO DOS",
+        description : "Su descripción",
+        dateList : ["2022-07-03T22:44:33.081+00:00", "2022-07-04T22:44:33.081+00:00"],
+        place : "Su ubicación",
+        outstanding : false,
+        image : "http://#"
     },
     {
-        vehiculo: "Polo 1.0 Mi 79cv 16V 5p",
-        marca: "VW - VolksWagen",
-        ano: 2005,
-        descripcion: "vehiculo grande",
-        vendido: false
+        title : "EVENTO TRES",
+        description : "Su descripción",
+        dateList : ["2022-07-05T22:44:33.081+00:00", "2022-07-06T22:44:33.081+00:00"],
+        place : "Su ubicación",
+        outstanding : false,
+        image : "http://#"
     }
 ]
 
@@ -34,7 +37,7 @@ const getUsers = async () => {
 }
 
 module.exports = {
-    initialNotes,
+    initialEvents,
     api,
     getUsers
 }

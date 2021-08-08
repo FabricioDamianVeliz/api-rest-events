@@ -1,116 +1,85 @@
 const mongoose = require('mongoose');
 const {server} = require('../index');
-const Vehiculo = require('../models/Vehiculo');
-const {initialVehicles,api} = require('./helpers');
+const Event = require('../models/Event');
+const {initialEvents,api} = require('./helpers');
 
 beforeEach(async () => {
-    await Vehiculo.deleteMany({});
+    await Event.deleteMany({});
 
     //secuencial
-    for(const vehicle of initialVehicles){
-        const vehicleObject = new Vehiculo(vehicle);
-        await vehicleObject.save();
+    for(const event of initialEvents){
+        const eventObject = new Event(event);
+        await eventObject.save();
     }
 })
 
-describe('GET all vehicles', () => {
-    test('los vehiculos se devuelven en json', async () => {
+describe('obtener todos los eventos', () => {
+    test('los eventos se devuelven en json', async () => {
         await api
-            .get('/vehiculos')
+            .get('/api/events')
             .expect(200)
             .expect('Content-Type', /application\/json/);
     });
     
-    test('tenemos 3 vehiculos', async () => {
+    test('tenemos 3 eventos', async () => {
         
-        const response = await api.get('/vehiculos');
-        expect(response.body).toHaveLength(initialVehicles.length);
+        const response = await api.get('/api/events');
+        expect(response.body).toHaveLength(initialEvents.length);
             
     });
     
-    test('la marca de alguno de los vehiculos es correcta', async () => {
+    test('el titulo de alguno de los eventos es correcto', async () => {
         
-        const response = await api.get('/vehiculos');
-        const marcas = response.body.map(vehiculo => vehiculo.marca);
-        expect(marcas).toContain('Acura');
+        const response = await api.get('/api/events');
+        const titles = response.body.map(event => event.title);
+        expect(titles).toContain('EVENTO UNO');
             
     });
 });
 
-describe('create a vehicle', () => {
-    test('se puede agregar un vehiculo válido', async () => {
+describe('crear un evento', () => {
+    test('se puede agregar un evento válido', async () => {
     
-        const newVehicle = {
-            vehiculo: "Virage Coupe 6.0 V12 490cv",
-            marca: "ASTON MARTIN",
-            ano: 2015,
-            descripcion: "vehiculo grande",
-            vendido: false
+        const newEvent = {
+            title : "EVENTO CUATRO",
+            description : "Su descripción",
+            dateList : ["2022-07-07T22:44:33.081+00:00", "2022-07-08T22:44:33.081+00:00"],
+            place : "Su ubicación",
+            outstanding : false,
+            image : "http://#"
         }
     
         await api
-            .post('/vehiculos')
-            .send(newVehicle)
+            .post('/api/events-login')
+            .send(newEvent)
             .expect(201)
             .expect('Content-Type', /application\/json/);
         
-        const response = await api.get('/vehiculos');
-        const marcas = response.body.map(vehiculo => vehiculo.marca);
-        expect(response.body).toHaveLength(initialVehicles.length+1);
-        expect(marcas).toContain('ASTON MARTIN');
+        const response = await api.get('/api/events');
+        const titles = response.body.map(event => event.title);
+        expect(response.body).toHaveLength(initialEvents.length+1);
+        expect(titles).toContain('EVENTO CUATRO');
         
     });
     
-    test('no se puede agregar un vehiculo válido', async () => {
+    test('no se puede agregar un evento válido', async () => {
         
-        const newVehicle = {
-
-            marca: "ASTON MARTIN",
-            ano: 2015,
-            descripcion: "vehiculo grande",
-            vendido: false
+        const newEvent = {
+            title : "EVENTO CINCO",
+            dateList : ["2022-07-09T22:44:33.081+00:00", "2022-07-10T22:44:33.081+00:00"],
+            place : "Su ubicación",
+            outstanding : false,
+            image : "http://#"
         }
     
         await api
-            .post('/vehiculos')
-            .send(newVehicle)
+            .post('/api/events-login')
+            .send(newEvent)
             .expect(400)
         
-        const response = await api.get('/vehiculos');
-        expect(response.body).toHaveLength(initialVehicles.length);
+        const response = await api.get('/api/events');
+        expect(response.body).toHaveLength(initialEvents.length);
     
-    });
-});
-
-describe('delete a vehicle', () => {
-
-    test('un vehiculo se puede borrar', async () => {
-    
-        const response = await api.get('/vehiculos');
-        const{body: vehiculos} = response;
-        const vehicleToDelete = vehiculos[0];
-
-        await api
-            .delete(`/vehiculos/${vehicleToDelete.id}`)
-            .expect(204)
-
-        const responseTwo = await api.get('/vehiculos');
-        expect(responseTwo.body).toHaveLength(initialVehicles.length-1);
-
-        const marcas = responseTwo.body.map(vehiculo => vehiculo.marca);
-        expect(marcas).not.toContain(vehicleToDelete.marca);
-    });
-
-    test('un vehiculo no se puede borrar', async () => {
-
-        await api
-            .delete('/vehiculos/1234')
-            .expect(400)
-
-        const response = await api.get('/vehiculos');
-
-        expect(response.body).toHaveLength(initialVehicles.length);
-
     });
 });
 

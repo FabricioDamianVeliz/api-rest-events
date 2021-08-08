@@ -33,9 +33,9 @@ Content-Type : application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMGQ4ODA5ZjVjNThmMTczNDM0ZGZiZCIsInVzZXJuYW1lIjoiTWNMb3ZpbiIsImlhdCI6MTYyODI3Njc1NSwiZXhwIjoxNjI4ODgxNTU1fQ.He7RcVooUV1nmwzMLXlpNCEfbgMo9G7sE5B7YC0nGI0
 
 {
-    "title" : "EVENTO 11",
+    "title" : "EVENTO 12",
     "description" : "Su descripción",
-    "dateList" : ["2022-06-18T22:44:33.081+00:00", "2022-06-17T22:44:33.081+00:00"],
+    "dateList" : ["2022-06-20T22:44:33.081+00:00", "2022-06-19T22:44:33.081+00:00"],
     "place" : "Su ubicación",
     "outstanding" : false,
     "image" : "http://#"

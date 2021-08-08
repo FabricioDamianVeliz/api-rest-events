@@ -4,18 +4,19 @@ const {api, getUsers} = require('./helpers');
 const mongoose = require('mongoose');
 const {server} = require('../index');
 
-describe.only('creando un nuevo usuario', () => {
-    beforeEach(async () => {
-        await User.deleteMany({});
+beforeEach(async () => {
+    await User.deleteMany({});
 
-        const saltRounds = 10;
-        const passwordHash = await bcrypt.hash('1234', saltRounds);
-        const user = new User({username: 'McLovin', passwordHash});
+    const saltRounds = 10;
+    const passwordHash = await bcrypt.hash('1234', saltRounds);
+    const user = new User({username: 'McLovin', name: 'Fabricio', passwordHash});
 
-        await user.save();
-    });
+    await user.save();
+});
 
-    test('funciona como se esperaba creando un nuevo nombre de usuario', async() => {
+describe('creando un nuevo usuario', () => {
+    
+    test('creación exitosa con un nombre de usuario no existente', async() => {
 
         const usersAtStart = await getUsers();
 
@@ -40,7 +41,7 @@ describe.only('creando un nuevo usuario', () => {
         expect(usernames).toContain(newUser.username);
     });
 
-    test('la creación falla con el código de estado y el mensaje adecuado si el nombre de usuario ya está en uso', async() => {
+    test('creación fallida con un nombre de usuario existente', async() => {
 
         const usersAtStart = await getUsers();
 
@@ -63,9 +64,10 @@ describe.only('creando un nuevo usuario', () => {
 
         expect(usersAtEnd).toHaveLength(usersAtStart.length);
     });
-
-    afterAll(() => {
-        mongoose.connection.close();
-        server.close();
-    });
+ 
 })
+
+afterAll(() => {
+    mongoose.connection.close();
+    server.close();
+});
